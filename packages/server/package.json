@@ -1,7 +1,13 @@
 {
   "name": "@fibonacci-calculator/server",
   "version": "1.0.0",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts"
+  },
   "dependencies": {
-    "@fibonacci-calculator/server": "1.0.0"
+    "hono": "^3.5.4"
+  },
+  "devDependencies": {
+    "bun-types": "^0.6.2"
   }
 }

@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"bun:dev:* \"",
-    "dev:client": "cd packages/client && bun run dev"
+    "dev:client": "cd packages/client && bun run dev",
+    "dev:server": "cd packages/server && bun run dev"
   },
   "workspaces": [
     "packages/*"
