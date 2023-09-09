@@ -1,0 +1,7 @@
+{
+  "name": "fibonacci-calculator",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}

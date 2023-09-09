@@ -1,0 +1,7 @@
+{
+  "name": "@fibonacci-calculator/server",
+  "version": "1.0.0",
+  "dependencies": {
+    "@fibonacci-calculator/server": "1.0.0"
+  }
+}
