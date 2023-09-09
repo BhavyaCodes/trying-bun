@@ -1,10 +1,14 @@
 {
   "name": "fibonacci-calculator",
   "private": true,
+  "scripts": {
+    "dev": "concurrently \"bun:dev:* \"",
+    "dev:client": "cd packages/client && bun run dev"
+  },
   "workspaces": [
     "packages/*"
   ],
-  "scripts": {
-    "client:dev": "cd packages/client && bun run dev"
+  "devDependencies": {
+    "concurrently": "^8.2.1"
   }
 }
