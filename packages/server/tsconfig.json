@@ -2,8 +2,13 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "strict": true,
-    // "jsx": "react-jsx",
-    // "jsxFragmentFactory": "Fragment",
-    // "jsxImportSource": "hono/jsx"
+    "types": [
+      "bun-types" // add Bun global
+    ],
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "downlevelIteration": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
   }
 }

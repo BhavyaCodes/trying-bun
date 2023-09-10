@@ -4,7 +4,9 @@
   "scripts": {
     "dev": "concurrently \"bun:dev:* \"",
     "dev:client": "cd packages/client && bun run dev",
-    "dev:server": "cd packages/server && bun run dev"
+    "dev:server": "cd packages/server && bun run dev",
+    "test": "bun test",
+    "test:watch": "bun test --watch"
   },
   "workspaces": [
     "packages/*"
