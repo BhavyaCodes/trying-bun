@@ -66,8 +66,10 @@ app.route("/api", api);
 // app.use("/", serveStatic({ path: "./src/static/index.html" }));
 // app.use("*", serveStatic({ root: "./src/static" }));
 
-app.use("/", serveStatic({ path: "../client/dist/index.html" }));
-app.use("*", serveStatic({ root: "../client/dist" }));
+if (Bun.env.NODE_ENV === "production") {
+  app.use("/", serveStatic({ path: "../client/dist/index.html" }));
+  app.use("*", serveStatic({ root: "../client/dist" }));
+}
 
 app.onError((err, c) => {
   if (err instanceof HTTPException) {

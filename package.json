@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"bun:dev:* \"",
+    "start:prod": "cd packages/server && bun run start",
     "dev:client": "cd packages/client && bun run dev",
     "dev:server": "cd packages/server && bun run dev",
     "build": "cd packages/client && bun run build:prod",
