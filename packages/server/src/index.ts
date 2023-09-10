@@ -12,11 +12,6 @@ const MAX_NUMBER = 50;
 
 const api = new Hono();
 
-// api.get("/", async (c) => {
-//   const color = await redis.get("color");
-//   return c.json({ color });
-// });
-
 api.get(
   "/:number",
   validator("param", (value, c) => {
@@ -65,32 +60,11 @@ api.get(
   }
 );
 
-const basePath = __dirname;
-console.log(basePath);
-
 const app = new Hono();
-app.use(
-  "*",
-  (c, next) => {
-    console.log("hii");
-    return next();
-  },
-  // serveStatic({ path: path.join(__dirname, "static") })
-  serveStatic({ path: "./src/static/index.html" })
-);
-// app.use("/static/*", serveStatic({ root: "./" }));
-// app.get("*", serveStatic({ path: "./static/fallback.txt" }));
 
 app.route("/api", api);
-
-// app.use(
-//   "/static",
-//   (c, next) => {
-//     console.log("here");
-//     return next();
-//   },
-//   serveStatic({ path: "./static/index.html" })
-// );
+app.use("/", serveStatic({ path: "./src/static/index.html" }));
+app.use("*", serveStatic({ root: "./src/static" }));
 
 app.onError((err, c) => {
   if (err instanceof HTTPException) {
