@@ -2,6 +2,7 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "strict": true,
+    "strictNullChecks": true,
     "types": [
       "bun-types" // add Bun global
     ],
@@ -10,5 +11,6 @@
     "downlevelIteration": true,
     "allowImportingTsExtensions": true,
     "noEmit": true,
+    "noUncheckedIndexedAccess": true
   }
 }
