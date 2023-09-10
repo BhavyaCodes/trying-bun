@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
+    // "moduleResolution": "NodeNext",
+    // "module": "NodeNext",
     "strict": true,
     "strictNullChecks": true,
     "types": [
@@ -11,6 +13,10 @@
     "downlevelIteration": true,
     "allowImportingTsExtensions": true,
     "noEmit": true,
-    "noUncheckedIndexedAccess": true
+    "noUncheckedIndexedAccess": true,
+    // "jsx": "preserve",
+    // "jsxFactory": "jsx",
+    // "jsxFragmentFactory": "Fragment",
+    // "jsxImportSource": "hono/jsx"
   }
 }

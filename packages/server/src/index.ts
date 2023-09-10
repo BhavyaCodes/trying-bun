@@ -4,6 +4,7 @@ import { validator } from "hono/validator";
 import { HTTPException } from "hono/http-exception";
 import { numbersHash, numbersHashKey } from "./utils/redis-keys";
 import { calculateFib } from "./utils";
+import { serveStatic } from "hono/bun";
 
 const redis = new Redis();
 
@@ -11,10 +12,10 @@ const MAX_NUMBER = 50;
 
 const api = new Hono();
 
-api.get("/", async (c) => {
-  const color = await redis.get("color");
-  return c.json({ color });
-});
+// api.get("/", async (c) => {
+//   const color = await redis.get("color");
+//   return c.json({ color });
+// });
 
 api.get(
   "/:number",
@@ -50,7 +51,6 @@ api.get(
     );
 
     if (cachedValue) {
-      console.log("cachedddd");
       return c.json({ result: parseInt(cachedValue) });
     }
 
@@ -65,8 +65,32 @@ api.get(
   }
 );
 
+const basePath = __dirname;
+console.log(basePath);
+
 const app = new Hono();
+app.use(
+  "*",
+  (c, next) => {
+    console.log("hii");
+    return next();
+  },
+  // serveStatic({ path: path.join(__dirname, "static") })
+  serveStatic({ path: "./src/static/index.html" })
+);
+// app.use("/static/*", serveStatic({ root: "./" }));
+// app.get("*", serveStatic({ path: "./static/fallback.txt" }));
+
 app.route("/api", api);
+
+// app.use(
+//   "/static",
+//   (c, next) => {
+//     console.log("here");
+//     return next();
+//   },
+//   serveStatic({ path: "./static/index.html" })
+// );
 
 app.onError((err, c) => {
   if (err instanceof HTTPException) {
