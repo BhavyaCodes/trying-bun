@@ -2,8 +2,12 @@ import { Hono } from "hono";
 import Redis from "ioredis";
 import { validator } from "hono/validator";
 import { HTTPException } from "hono/http-exception";
+import { numbersHash, numbersHashKey } from "./utils/redis-keys";
+import { calculateFib } from "./utils";
 
 const redis = new Redis();
+
+const MAX_NUMBER = 50;
 
 const api = new Hono();
 
@@ -20,15 +24,14 @@ api.get(
       throw new HTTPException(400, { message: "Invalid number" });
     }
     const number = Math.floor(parseInt(numberString));
-    console.log(number);
 
     if (number < 0 || isNaN(number)) {
       throw new HTTPException(400, { message: "Invalid number" });
     }
 
-    if (number > 50) {
+    if (number > MAX_NUMBER) {
       throw new HTTPException(400, {
-        message: "number too high, use less than 50",
+        message: `number too high, use less than ${MAX_NUMBER}`,
       });
     }
 
@@ -38,7 +41,27 @@ api.get(
   }),
   async (c) => {
     const numberString = c.req.valid("param").number;
-    return c.text(numberString);
+
+    // get number from cache
+
+    const cachedValue = await redis.hget(
+      numbersHash(),
+      numbersHashKey(numberString)
+    );
+
+    if (cachedValue) {
+      console.log("cachedddd");
+      return c.json({ result: parseInt(cachedValue) });
+    }
+
+    // calculate fib number
+    const calculated = calculateFib(parseInt(numberString));
+
+    redis.hset(numbersHash(), {
+      [numbersHashKey(numberString)]: calculated,
+    });
+
+    return c.json({ result: calculated });
   }
 );
 

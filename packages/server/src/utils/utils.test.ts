@@ -16,3 +16,7 @@ test("fib(1) = 1", () => {
 test("fib(9) = 34", () => {
   expect(calculateFib(9)).toBe(34);
 });
+
+test("fib(NaN)", () => {
+  expect(calculateFib(NaN)).toBe(0);
+});

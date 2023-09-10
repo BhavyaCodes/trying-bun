@@ -1,4 +1,7 @@
 export const calculateFib = (index: number): number => {
+  if (isNaN(index)) {
+    return 0;
+  }
   if (index === 0) {
     return 0;
   }
