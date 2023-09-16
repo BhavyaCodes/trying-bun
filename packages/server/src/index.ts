@@ -62,7 +62,7 @@ api.get(
 
 const app = new Hono();
 
-app.route("/api", api);
+const apiRoute = app.route("/api", api);
 // app.use("/", serveStatic({ path: "./src/static/index.html" }));
 // app.use("*", serveStatic({ root: "./src/static" }));
 
@@ -81,6 +81,8 @@ app.onError((err, c) => {
   return c.text("internal server error");
   //...
 });
+
+export type ApiType = typeof apiRoute;
 
 export default {
   port: 5000,
