@@ -8,7 +8,7 @@ import { serveStatic } from "hono/bun";
 
 const redis = new Redis();
 
-const MAX_NUMBER = 50;
+const MAX_NUMBER = 40;
 
 const api = new Hono();
 

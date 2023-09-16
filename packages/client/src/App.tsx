@@ -1,17 +1,11 @@
-import { FormEventHandler, useEffect, useRef } from "react";
+import { FormEventHandler, useRef, useState } from "react";
 import classes from "./App.module.css";
 import { slashNumberApi } from "./api";
 
 function App() {
   const inputRef = useRef<HTMLInputElement>(null);
-  // const [result, setResult] = useState(null);
-
-  useEffect(() => {
-    slashNumberApi[":number"]
-      .$get({ param: { number: "2" } })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  }, []);
+  const [input, setInput] = useState<string | null>(null);
+  const [result, setResult] = useState<number | null>(null);
 
   const handleSubmit: FormEventHandler = (e) => {
     e.preventDefault();
@@ -19,6 +13,14 @@ function App() {
     const numberString = inputRef.current?.value;
 
     if (!numberString) return;
+
+    slashNumberApi[":number"]
+      .$get({ param: { number: numberString } })
+      .then((res) => res.json())
+      .then((data) => {
+        setInput(numberString);
+        setResult(data.result);
+      });
   };
 
   return (
@@ -37,6 +39,13 @@ function App() {
           Calculate
         </button>
       </form>
+      {result ? (
+        <p className={classes.result}>
+          Fib({input}): {result}
+        </p>
+      ) : (
+        <p> </p>
+      )}
     </main>
   );
 }

@@ -65,3 +65,10 @@ body {
 	padding: 4px;
 	border-radius: 4px;	
 }
+
+.result {
+	margin-top: 1rem;
+	font-size: large;
+	font-weight: 600;
+	color: #0F2C59;
+}
