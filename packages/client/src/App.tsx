@@ -1,13 +1,17 @@
-import axios from "axios";
 import { FormEventHandler, useEffect, useRef } from "react";
 import classes from "./App.module.css";
+import { slashNumberApi } from "./api";
 
 function App() {
   const inputRef = useRef<HTMLInputElement>(null);
   // const [result, setResult] = useState(null);
+
   useEffect(() => {
-    axios.get("/api/4").then((res) => console.log(res.data));
-  });
+    slashNumberApi[":number"]
+      .$get({ param: { number: "2" } })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }, []);
 
   const handleSubmit: FormEventHandler = (e) => {
     e.preventDefault();

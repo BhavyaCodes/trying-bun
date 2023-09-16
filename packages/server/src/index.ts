@@ -12,7 +12,7 @@ const MAX_NUMBER = 50;
 
 const api = new Hono();
 
-api.get(
+const numberApiType = api.get(
   "/:number",
   validator("param", (value, c) => {
     const numberString = value.number;
@@ -46,7 +46,7 @@ api.get(
     );
 
     if (cachedValue) {
-      return c.json({ result: parseInt(cachedValue) });
+      return c.jsonT({ result: parseInt(cachedValue) });
     }
 
     // calculate fib number
@@ -56,13 +56,12 @@ api.get(
       [numbersHashKey(numberString)]: calculated,
     });
 
-    return c.json({ result: calculated });
+    return c.jsonT({ result: calculated });
   }
 );
 
 const app = new Hono();
-
-const apiRoute = app.route("/api", api);
+app.route("/api", api);
 // app.use("/", serveStatic({ path: "./src/static/index.html" }));
 // app.use("*", serveStatic({ root: "./src/static" }));
 
@@ -82,7 +81,7 @@ app.onError((err, c) => {
   //...
 });
 
-export type ApiType = typeof apiRoute;
+export type SlashNumberApiType = typeof numberApiType;
 
 export default {
   port: 5000,
