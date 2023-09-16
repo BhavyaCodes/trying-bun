@@ -1,11 +1,19 @@
-import { FormEventHandler, useRef, useState } from "react";
+import { FormEventHandler, useEffect, useRef, useState } from "react";
 import classes from "./App.module.css";
-import { slashNumberApi } from "./api";
+import { slashAllApi, slashNumberApi } from "./api";
 
 function App() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [input, setInput] = useState<string | null>(null);
   const [result, setResult] = useState<number | null>(null);
+
+  useEffect(() => {
+    slashAllApi["all"]
+      .$get()
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+  }, []);
 
   const handleSubmit: FormEventHandler = (e) => {
     e.preventDefault();

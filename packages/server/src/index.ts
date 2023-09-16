@@ -12,9 +12,15 @@ const MAX_NUMBER = 40;
 
 const api = new Hono();
 
+const allNumbersApiType = api.get("/all", async (c) => {
+  const numbers = await redis.hgetall(numbersHash());
+
+  return c.jsonT({ result: numbers });
+});
+
 const numberApiType = api.get(
   "/:number",
-  validator("param", (value, c) => {
+  validator("param", (value) => {
     const numberString = value.number;
     if (!numberString) {
       throw new HTTPException(400, { message: "Invalid number" });
@@ -62,10 +68,8 @@ const numberApiType = api.get(
 
 const app = new Hono();
 app.route("/api", api);
-// app.use("/", serveStatic({ path: "./src/static/index.html" }));
-// app.use("*", serveStatic({ root: "./src/static" }));
 
-if (Bun.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production") {
   app.use("/", serveStatic({ path: "../client/dist/index.html" }));
   app.use("*", serveStatic({ root: "../client/dist" }));
 }
@@ -82,6 +86,7 @@ app.onError((err, c) => {
 });
 
 export type SlashNumberApiType = typeof numberApiType;
+export type SlashAllApiType = typeof allNumbersApiType;
 
 export default {
   port: 5000,
