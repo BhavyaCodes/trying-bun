@@ -41,7 +41,7 @@ export const CachedValues = () => {
           </thead>
           {/* </th> */}
           {Object.entries(cachedValues).map(([key, value]) => (
-            <tbody>
+            <tbody key={key}>
               <tr>
                 <td>{key}</td>
                 <td>{value}</td>
