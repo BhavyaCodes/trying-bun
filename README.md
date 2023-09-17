@@ -23,5 +23,5 @@ TODO
   - [ ] disable button when fetching
   - [x] display all cached values
   - [ ] add refresh button for caches values
-  - [ ] add description of project
-  - [ ] add logos of tech
+  - [x] add description of project
+  - [x] add logos of tech

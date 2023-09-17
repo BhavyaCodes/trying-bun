@@ -9,6 +9,7 @@ function App() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [input, setInput] = useState<string | null>(null);
   const [result, setResult] = useState<number | null>(null);
+  const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
     slashAllApi["all"]
@@ -20,6 +21,7 @@ function App() {
 
   const handleSubmit: FormEventHandler = (e) => {
     e.preventDefault();
+    setIsFetching(true);
 
     const numberString = inputRef.current?.value;
 
@@ -31,7 +33,8 @@ function App() {
       .then((data) => {
         setInput(numberString);
         setResult(data.result);
-      });
+      })
+      .finally(() => setIsFetching(false));
   };
 
   return (
@@ -48,7 +51,11 @@ function App() {
               min="0"
               className={classes.input}
             />
-            <button type="submit" className={classes.button}>
+            <button
+              type="submit"
+              className={classes.button}
+              disabled={isFetching}
+            >
               Calculate
             </button>
           </form>

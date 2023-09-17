@@ -65,6 +65,13 @@ body {
 	color: #fff;
 	padding: 4px;
 	border-radius: 4px;	
+	cursor: pointer;
+}
+
+.button:disabled {
+	background-color: #6a8797;
+	cursor: progress;
+
 }
 
 .result {
