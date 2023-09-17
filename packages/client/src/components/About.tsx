@@ -5,7 +5,7 @@ export const About = () => {
     <div>
       <h2 className={classes.heading}>About this project</h2>
       <p>
-        Just a dumb little project to try out new tech I have been learning
+        Just a dumb little project to try out new tech I have been exploring
         recently
       </p>
     </div>
