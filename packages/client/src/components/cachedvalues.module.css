@@ -6,6 +6,38 @@
 	/* background-color: blue; */
 }
 
-.root {
-	
+.table {
+	width: 100%;
+	/* border: 1px solid black; */
+	text-align: left;
+	border-spacing: 0;
+	color: rgba(0,0,0,0.8)
+}
+
+.table tbody:nth-child(even){
+	background-color: #EADBC8;
+	/* padding: .4rem; */
+}
+
+.table thead th{
+	/* padding: 5rem; */
+	padding: .4rem
+}
+
+.table td{
+	padding: .4rem;
+	/* border-radius: 1rem; */
+	font-weight: 600;
+}
+
+
+.table tbody td:first-child {
+	padding-left: 0.6rem;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+.table tbody td:last-child {
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
 }

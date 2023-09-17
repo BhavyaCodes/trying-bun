@@ -27,18 +27,22 @@ export const CachedValues = () => {
     <div className={classes.root}>
       <h2 className={classes.heading}>Cached values</h2>
       <div>
-        <table>
-          <th>
+        <table className={classes.table}>
+          {/* <th> */}
+          <thead>
             <tr>
-              <td>index</td>
-              <td>value</td>
+              <th>index</th>
+              <th>value</th>
             </tr>
-          </th>
+          </thead>
+          {/* </th> */}
           {Object.entries(cachedValues).map(([key, value]) => (
-            <tr>
-              <td>{key}</td>
-              <td>{value}</td>
-            </tr>
+            <tbody>
+              <tr>
+                <td>{key}</td>
+                <td>{value}</td>
+              </tr>
+            </tbody>
           ))}
         </table>
       </div>

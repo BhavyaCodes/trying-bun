@@ -21,7 +21,7 @@ TODO
 - [ ] fix caching dependency install in docker image
 - [ ] UI
   - [ ] disable button when fetching
-  - [ ] display all cached values
+  - [x] display all cached values
   - [ ] add refresh button for caches values
   - [ ] add description of project
   - [ ] add logos of tech

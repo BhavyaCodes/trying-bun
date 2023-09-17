@@ -55,7 +55,7 @@ function App() {
               Fib({input}): {result}
             </p>
           ) : (
-            <p> </p>
+            <p className={classes.result}>&nbsp;</p>
           )}
         </section>
         <section>
