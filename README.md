@@ -18,5 +18,10 @@ TODO
 
 - [x] implement e2e types
 - [x] display calculated value
-- [ ] display all cached values
 - [ ] fix caching dependency install in docker image
+- [ ] UI
+  - [ ] disable button when fetching
+  - [ ] display all cached values
+  - [ ] add refresh button for caches values
+  - [ ] add description of project
+  - [ ] add logos of tech
