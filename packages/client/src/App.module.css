@@ -12,18 +12,21 @@ body {
 	font-family: Epilogue, Epilogue-fallback, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
   font-weight: 400;
 	color: rgb(55, 53, 47);
-  /* color: #777;
-  font-size: 1.6rem; */
   box-sizing: border-box;
+	background-color: #F8F0E5;
+
 }
 
 .app {
 	min-height: 100svh;
-	background-color: #F8F0E5;
 	display: flex;
-	flex-direction: column;
-	align-items: center;
+	justify-content: center; 
 	padding: 0 2rem;
+	max-width: 100vw;
+}
+
+.container {
+	width: 600px;
 }
 
 .heading {
@@ -31,7 +34,6 @@ body {
 	padding: 20px 0;
 	font-weight: 600;
 	font-size: 2rem;
-	/* background-color: blue; */
 }
 
 .form {
@@ -58,7 +60,6 @@ body {
 	margin-left: 0.5rem;
 	flex-shrink: 0;
 	font: inherit;
-	/* outline: none; */
 	border: none;
 	background-color: #22668D;
 	color: #fff;
