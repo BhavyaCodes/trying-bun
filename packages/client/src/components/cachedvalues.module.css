@@ -3,12 +3,10 @@
 	padding: 20px 0;
 	font-weight: 600;
 	font-size: 1.5rem;
-	/* background-color: blue; */
 }
 
 .table {
 	width: 100%;
-	/* border: 1px solid black; */
 	text-align: left;
 	border-spacing: 0;
 	color: rgba(0,0,0,0.8)
@@ -16,17 +14,14 @@
 
 .table tbody:nth-child(even){
 	background-color: #EADBC8;
-	/* padding: .4rem; */
 }
 
 .table thead th{
-	/* padding: 5rem; */
 	padding: .4rem
 }
 
 .table td{
 	padding: .4rem;
-	/* border-radius: 1rem; */
 	font-weight: 600;
 }
 

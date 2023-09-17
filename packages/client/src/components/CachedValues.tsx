@@ -21,7 +21,11 @@ export const CachedValues = () => {
 
   console.log(cachedValues);
 
-  if (!cachedValues) return null;
+  if (!cachedValues) {
+    return;
+  }
+
+  if (!Object.keys(cachedValues).length) return null;
 
   return (
     <div className={classes.root}>
