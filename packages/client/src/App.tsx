@@ -3,6 +3,7 @@ import classes from "./App.module.css";
 import { slashAllApi, slashNumberApi } from "./api";
 import { CachedValues } from "./components/CachedValues";
 import { TechUsed } from "./components/TechUsed";
+import { About } from "./components/About";
 
 function App() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -61,6 +62,9 @@ function App() {
         </section>
         <section>
           <CachedValues />
+        </section>
+        <section>
+          <About />
         </section>
         <section>
           <TechUsed />
